@@ -8,4 +8,20 @@ import {getJoke} from '../utils'
   Вам придётся использовать асинхронный эффект. Это имеет свои особенности.
 */
 
-export const UseEffectHook = () => { }
+export const UseEffectHook = () => { 
+
+  const [data, setJoke] = useState('joke goes here');
+  
+  async function fetchData() {
+    const response = await getJoke();
+    setJoke(response.value);
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return ( <div data-testid="joke">{data}</div>);
+
+}
+

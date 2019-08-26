@@ -15,4 +15,19 @@ import React, {useState} from 'react'
 */
 
 export const useCounter = () => {
-}
+
+    const [count, setCount] = useState(0);
+
+    return {
+        count,
+        // increment: useCallback(() => setCount(count + 1)),
+        // decrement: useCallback(() => setCount(count - 1))
+
+        increment: function() {
+            return setCount(count + 1)
+          },
+        decrement: function() {
+            return setCount(count - 1)
+          },
+    }
+  };
